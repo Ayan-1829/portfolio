@@ -19,7 +19,7 @@ const DATA_PROJECTS = [
       "Built from scratch using basic logic gates, demonstrating core principles of computer architecture.",
     ],
     links:  [ { label: "🐙 GitHub", url: "https://github.com/Ayan-1829/CSE-3203-Computer-Architecture-and-Design" } ],
-    videos: [ { title: "Line Drawing Algorithms", url: "https://www.youtube.com/embed/lLsZSOnPr-U" } ],
+    videos: [ { title: "5-bit CPU", url: "https://www.youtube.com/embed/lLsZSOnPr-U" } ],
     info:   [],
   },
   {
