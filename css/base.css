@@ -119,3 +119,14 @@ a, button, [onclick],
 .course-card, .skill-pill, .btn {
   cursor: inherit;
 }
+
+/* In art mode, suppress every hardcoded cursor so elements always
+   inherit the brush/none cursor set on <body> by JS.
+   We target only the properties that fight us, not body itself.    */
+body.art-mode *,
+body.art-mode a,
+body.art-mode button,
+body.art-mode img,
+body.art-mode [onclick] {
+  cursor: inherit !important;
+}
