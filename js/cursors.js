@@ -13,6 +13,59 @@ const SPLASH_SIZES     = [60, 80, 100, 120, 140, 90, 70, 110];
 let splashClickListener = null;
 let currentMode = 'academic';
 
+/* ── Safari detection ────────────────────────── */
+const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
+/* ── Fake cursor for Safari (hotspot workaround) ─────────────
+   Safari ignores the hotspot values in url() cursor declarations,
+   always treating the top-left corner as the hotspot. We hide the
+   native cursor and follow the pointer with a positioned <img>
+   instead, offsetting it so the visual tip lands at the hotspot.
+──────────────────────────────────────────────────────────────── */
+let fakeCursorEl = null;
+let fakeCursorMoveHandler = null;
+
+function showFakeCursor(hotspotX, hotspotY, imgSrc) {
+  hideFakeCursor();
+
+  document.body.style.cursor = 'none';
+
+  fakeCursorEl = document.createElement('img');
+  fakeCursorEl.src = imgSrc;
+  Object.assign(fakeCursorEl.style, {
+    position:      'fixed',
+    top:           '0',
+    left:          '0',
+    width:         '32px',
+    height:        '32px',
+    pointerEvents: 'none',
+    cursor:        'none',
+    zIndex:        '999999',
+    transform:     `translate(-${hotspotX}px, -${hotspotY}px)`,
+  });
+  document.body.appendChild(fakeCursorEl);
+
+  fakeCursorMoveHandler = e => {
+    if (fakeCursorEl) {
+      fakeCursorEl.style.left = e.clientX + 'px';
+      fakeCursorEl.style.top  = e.clientY + 'px';
+    }
+  };
+  document.addEventListener('mousemove', fakeCursorMoveHandler);
+}
+
+function hideFakeCursor() {
+  if (fakeCursorEl) {
+    fakeCursorEl.remove();
+    fakeCursorEl = null;
+  }
+  if (fakeCursorMoveHandler) {
+    document.removeEventListener('mousemove', fakeCursorMoveHandler);
+    fakeCursorMoveHandler = null;
+  }
+  document.body.style.cursor = '';
+}
+
 /* ── Ink canvas setup ────────────────────────── */
 const inkCanvas = document.getElementById('inkCanvas');
 const inkCtx    = inkCanvas ? inkCanvas.getContext('2d') : null;
@@ -156,7 +209,13 @@ function initInkCanvas() {
 /* ── Cursor application ──────────────────────── */
 function applyAcademicCursor() {
   currentMode = 'academic';
-  document.body.style.cursor = PEN_CURSOR_URL;
+  document.body.classList.remove('art-mode');
+  if (isSafari) {
+    showFakeCursor(2, 27, 'images/pen_icon.png');
+  } else {
+    document.body.style.cursor = PEN_CURSOR_URL;
+  }
+  /* Re-apply inherit on interactive els in case inline styles were set */
   setInteractiveCursor('inherit');
   removeSplashListener();
   if (inkCanvas) inkCanvas.style.pointerEvents = 'none';
@@ -164,8 +223,18 @@ function applyAcademicCursor() {
 
 function applyArtCursor() {
   currentMode = 'art';
-  document.body.style.cursor = BRUSH_CURSOR_URL;
-  setInteractiveCursor('inherit');
+  document.body.classList.add('art-mode');
+  if (isSafari) {
+    /* body.style.cursor = 'none' so all children inherit 'none' via CSS,
+       but some elements may have stale inline cursor styles — clear them. */
+    setInteractiveCursor('');
+    showFakeCursor(4, 28, 'images/brush_icon.png');
+  } else {
+    document.body.style.cursor = BRUSH_CURSOR_URL;
+    /* Don't call setInteractiveCursor here — the CSS rule
+       body.art-mode * { cursor: inherit !important } handles everything,
+       and inline styles would fight it on dynamically-created elements. */
+  }
   addSplashListener();
   clearAllInk();
 }
@@ -213,7 +282,10 @@ function updateCursorForMode(mode) {
 }
 
 function refreshCursor() {
-  updateCursorForMode(currentMode);
+  /* In art mode the CSS body.art-mode* rule handles everything —
+     re-running applyArtCursor on every click would fight it.
+     Only refresh in academic mode (keeps pen cursor after nav clicks). */
+  if (currentMode === 'academic') updateCursorForMode('academic');
 }
 
 document.addEventListener('DOMContentLoaded', function() {
