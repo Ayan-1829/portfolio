@@ -19,7 +19,7 @@ const DATA_PROJECTS = [
       "Visualise task completion and financial data through interactive charts, providing insights into daily habits and spending patterns.",
       "Tracks good habits and bad habits",
     ],
-    links:  [ { label: "Try for free", url: "daily-life-management.web.app" } ],
+    links:  [ { label: "Try for free", url: "https://daily-life-management.web.app" } ],
     videos: null,
     info:   [],
   },
