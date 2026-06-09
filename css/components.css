@@ -611,6 +611,11 @@ body.art-mode .uni-group-name {
   background: color-mix(in srgb, var(--accent) 8%, transparent);
 }
 
+.topic-link--disabled {
+  cursor: default;
+  pointer-events: none;
+}
+
 .topic-video-btn {
   display: inline-flex;
   align-items: center;
@@ -726,5 +731,3 @@ body.art-mode {
   user-select: none;
   -webkit-user-select: none;
 }
-
-
