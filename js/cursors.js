@@ -215,8 +215,9 @@ function applyAcademicCursor() {
   } else {
     document.body.style.cursor = PEN_CURSOR_URL;
   }
-  /* Re-apply inherit on interactive els in case inline styles were set */
-  setInteractiveCursor('inherit');
+  /* Explicitly set pen cursor on interactive elements so macOS
+     doesn't override with its native hand cursor */
+  setInteractiveCursor(isSafari ? 'none' : PEN_CURSOR_URL);
   removeSplashListener();
   if (inkCanvas) inkCanvas.style.pointerEvents = 'none';
 }
