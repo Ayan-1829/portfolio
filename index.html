@@ -252,7 +252,7 @@
     }
     btn.textContent = 'Sending…'; btn.disabled = true; status.style.display = 'none';
     const data = new FormData(form);
-    const body = JSON.stringify({ name: data.get('name'), email: data.get('email'), message: data.get('message'), timestamp: new Date().toLocaleString() });
+    const body = JSON.stringify({ type: 'contact', name: data.get('name'), email: data.get('email'), message: data.get('message'), timestamp: new Date().toLocaleString() });
     try {
       await fetch(url, { method: 'POST', body, mode: 'no-cors' });
       status.style.display = 'block'; status.style.color = 'var(--accent)';
@@ -289,11 +289,30 @@
     }
   });
 
+  /* ── Visit Tracking → Google Sheets ───────────── */
+  function trackVisit() {
+    const url = PORTFOLIO_DATA.contact.googleSheetsUrl;
+    if (!url || url === 'YOUR_GOOGLE_APPS_SCRIPT_URL') return;
+    fetch(url, {
+      method: 'POST',
+      body: JSON.stringify({
+        type:      'visit',
+        timestamp: new Date().toLocaleString(),
+        email:     '',
+        name:      '',
+        userAgent: navigator.userAgent,
+        page:      window.location.pathname,
+      }),
+      mode: 'no-cors',
+    }).catch(() => {});
+  }
+
   /* ── Boot ─────────────────────────────────────── */
   document.addEventListener('DOMContentLoaded', function() {
     Render.all('academic');
     initToggle();
     wireSecondaryBtn('academic');
+    trackVisit();
   });
 </script>
 </body>
