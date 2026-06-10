@@ -47,5 +47,5 @@ const DATA_CONTACT = {
     { label: "LinkedIn", url: "https://www.linkedin.com/in/ayansarkar1829",   emoji: "💼" },
     { label: "Facebook", url: "https://www.facebook.com/ayan.sarkar.1829507", emoji: "📘" },
   ],
-  googleSheetsUrl: "https://script.google.com/macros/s/AKfycbygW0D28eYgH6esEDRKFFJW946ixCOqjOkaZ5wHk6Qd6ejjlr-KffmK0XD-LKFnFDlb/exec",
+  googleSheetsUrl: "https://script.google.com/macros/s/AKfycbyIrxgecMRUecUyO064Ylq9lIOqXv5kUKy5uqSiVA9yIrzDst4LdKPWBCJX4Styf3lj/exec",
 };
