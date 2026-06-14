@@ -32,7 +32,7 @@ const DATA_COURSES = [
           { name: "String Handling",            links: [ { label: "Introducing String Class", url: null }, { label: "String Operations", url: null }, { label: "Big Number Manipulation using String", url: null } ], video: null },
           { name: "GUI and Advanced Topics",    links: [ { label: "Introducing Java Spring", url: null }, { label: "Graphical Drawing", url: null }, { label: "Animation", url: null }, { label: "Introducing JavaFX and its Components", url: null }, { label: "Simple Software Interface Design", url: null }, { label: "Database Connection", url: null } ], video: null },
         ],
-        links:  [ { label: "Course Outline", url: "https://drive.google.com/file/d/1KQO-ChPm_ZPxqnhmandsWfRGaRJBbfod/view" }, { label: "Books", url: "https://drive.google.com/drive/folders/1pCcBRRuWhqbu3IAvQFy1BOD69BbVFZAG?usp=sharing" }, { label: "MidTerm Slides", url: "https://drive.google.com/drive/folders/1Nupjv_C5t6PZTSov-UzfTBWA3rXYQu0n?usp=sharing" }, { label: "Final Slides", url: "https://drive.google.com/drive/folders/11ZvLvwr2BYfCth2PzyX1K9Jl8TNE82U-?usp=sharing" } ],
+        links:  [ { label: "Course Outline - Summer 2026", url: "https://drive.google.com/file/d/1KQO-ChPm_ZPxqnhmandsWfRGaRJBbfod/view" }, { label: "Books", url: "https://drive.google.com/drive/folders/1pCcBRRuWhqbu3IAvQFy1BOD69BbVFZAG?usp=sharing" }, { label: "MidTerm Slides", url: "https://drive.google.com/drive/folders/1Nupjv_C5t6PZTSov-UzfTBWA3rXYQu0n?usp=sharing" }, { label: "Final Slides", url: "https://drive.google.com/drive/folders/11ZvLvwr2BYfCth2PzyX1K9Jl8TNE82U-?usp=sharing" } ],
         videos: [],
       },
 
@@ -41,7 +41,7 @@ const DATA_COURSES = [
         code:        "CSE 202",
         title:       "Object Oriented Programming Lab",
         credits:     "1.5",
-        semester:    "Fall 2025",
+        semester:    "Fall 2025, Summer 2026",
         emoji:       "",
         description: "Implementing the principles of Object Oriented Programming in Java.",
         topics: [
@@ -56,8 +56,10 @@ const DATA_COURSES = [
           { name: "Multi-threading",             links: [ { label: "Threads in Java",   url: "https://www.geeksforgeeks.org/multithreading-in-java/" } ],  video: null },
         ],
         links: [
-          { label: "Course Outline", url: "https://drive.google.com/file/d/17hyx-0tYiNjUA9CBUKBAj4AfPeBVfO_s/view?usp=sharing" },
-          { label: "Lab Manuals",    url: "https://drive.google.com/drive/folders/1FcJcvayjum_jESf3uM6s5aY5O_oQ_ArA?usp=sharing" },
+          { label: "Course Outline - Summer 2026",  url: "https://drive.google.com/file/d/1urJtlmMnFgPfsD5dHDVRPpB8rkitEbWY/view" },
+          { label: "New Lab Manual",                url: "https://drive.google.com/file/d/1rwwv-rID2AzQ8CLcfxTRXvQg5zmXf0XH/view" },
+          { label: "Course Outline - Fall 2025",    url: "https://drive.google.com/file/d/17hyx-0tYiNjUA9CBUKBAj4AfPeBVfO_s/view?usp=sharing" },
+          { label: "Old Lab Manuals",               url: "https://drive.google.com/drive/folders/1FcJcvayjum_jESf3uM6s5aY5O_oQ_ArA?usp=sharing" },
         ],
         videos: [
           { title: "OOP in Java — Part 1", url: "https://www.youtube.com/embed/l7icgsjrnPE" },
@@ -86,8 +88,10 @@ const DATA_COURSES = [
           { name: "Verification of truth tables of the basic Flip-Flops with synchronous and asynchronous modes.",            links: [ { label: "Flip-Flops Guide",         url: "https://www.geeksforgeeks.org/flip-flop-types-their-conversion-and-applications/" } ],                              video: { title: "Flip-Flops Explained",     url: "https://www.youtube.com/embed/F1OC5e7Tn_o" } },
         ],
         links: [
-          { label: "Course Outline", url: "https://drive.google.com/file/d/17hyx-0tYiNjUA9CBUKBAj4AfPeBVfO_s/view?usp=sharing" },
-          { label: "Lab Manuals",    url: "https://drive.google.com/drive/folders/1b4tcoBlbepTmAcZRNuLce4RHVOhgrFWt?usp=sharing" },
+          { label: "Course Outline - Summer 2026",    url: "https://drive.google.com/file/d/1He14X841leQDyoJ9pDyeKNZJUliqJFxh/view" },
+          { label: "New Lab Manual",                  url: "https://drive.google.com/file/d/14_g-oYgYxR03BjFk_IjLQ2JvluaTu-oC/view" },
+          { label: "Course Outline - Fall 2025",      url: "https://drive.google.com/file/d/17hyx-0tYiNjUA9CBUKBAj4AfPeBVfO_s/view?usp=sharing" },
+          { label: "Old Lab Manuals",                 url: "https://drive.google.com/drive/folders/1b4tcoBlbepTmAcZRNuLce4RHVOhgrFWt?usp=sharing" },
         ],
         videos: [],
       },
@@ -113,7 +117,7 @@ const DATA_COURSES = [
           { name: "Implementation of analog to digital conversion and pulse coded transmission.", links: null,                                                                                                                                                       video: null },
         ],
         links: [
-          { label: "Course Outline", url: "https://drive.google.com/file/d/1eOmsADCYw2wTDClaK2LYWw6f1eMbFQSc/view?usp=sharing" },
+          { label: "Course Outline - Spring 2026", url: "https://drive.google.com/file/d/1eOmsADCYw2wTDClaK2LYWw6f1eMbFQSc/view?usp=sharing" },
           { label: "Lab Manuals",    url: "https://drive.google.com/drive/folders/1PrdV0QCES58caP1IynnWnIZzWxogQA4C?usp=sharing" },
         ],
         videos: [],
@@ -139,9 +143,10 @@ const DATA_COURSES = [
           { name: "AI Ethics",                               links: [ { label: "AI Ethics Guide",      url: "https://www.ibm.com/topics/ai-ethics" } ],                                                                                                                                              video: { title: "AI Ethics",            url: "https://www.youtube.com/embed/aGwYtUzMQUk" } },
         ],
         links: [
-          { label: "Slides for Midterm", url: "https://drive.google.com/drive/folders/17nrVGLj_TsVnq6p2XV8BtkTr1vQDA9n4?usp=sharing" },
-          { label: "Slides for Final",   url: "https://drive.google.com/drive/folders/1FZI5dn_twwHTi0-f2gl7grNCywEOqRRZ?usp=sharing" },
-          { label: "Books",              url: "https://drive.google.com/drive/folders/1ej1or8FloninLZAy8xqBlwnu3HcyiEAt?usp=sharing" },
+          { label: "Course Outline - Spring 2026",  url: "https://drive.google.com/file/d/1m_4dJtTWARgSodnn2pk9fNUW5dStDtH8/view" },
+          { label: "Slides for Midterm",            url: "https://drive.google.com/drive/folders/17nrVGLj_TsVnq6p2XV8BtkTr1vQDA9n4?usp=sharing" },
+          { label: "Slides for Final",              url: "https://drive.google.com/drive/folders/1FZI5dn_twwHTi0-f2gl7grNCywEOqRRZ?usp=sharing" },
+          { label: "Books",                         url: "https://drive.google.com/drive/folders/1ej1or8FloninLZAy8xqBlwnu3HcyiEAt?usp=sharing" },
         ],
         videos: [],
       },
@@ -164,7 +169,7 @@ const DATA_COURSES = [
           { name: "Outlier Detection",           links: [ { label: "Outlier Detection Techniques",  url: "https://www.geeksforgeeks.org/machine-learning-outlier/" } ],                             video: null },
         ],
         links: [
-          { label: "Course Outline", url: "https://drive.google.com/file/d/1hVAvncaP2Hf9gTtlyumkSd7F5K8U4Yo-/view?usp=sharing" },
+          { label: "Course Outline - Fall 2025", url: "https://drive.google.com/file/d/1hVAvncaP2Hf9gTtlyumkSd7F5K8U4Yo-/view?usp=sharing" },
           { label: "Books",          url: "https://drive.google.com/drive/folders/1Ocmx4NAbWwBCMV8XLjHKO_gSaWT701xx?usp=sharing" },
           { label: "Slides",         url: "https://drive.google.com/drive/folders/1ZDFc-U0XUNfaCMNdiIZn4extTj9iG9wl?usp=sharing" },
         ],
@@ -190,7 +195,7 @@ const DATA_COURSES = [
           { name: "Ensemble Learning",                                                                      links: null,                                                                                                                       video: { title: "Ensemble Learning",             url: "https://www.youtube.com/embed/Un9zObFjBH0" } },
         ],
         links: [
-          { label: "Course Outline", url: "https://drive.google.com/file/d/19AIaLKwOnf9Lr2TCakLTc2tGhstRMyVK/view?usp=sharing" },
+          { label: "Course Outline - Fall 2025", url: "https://drive.google.com/file/d/19AIaLKwOnf9Lr2TCakLTc2tGhstRMyVK/view?usp=sharing" },
           { label: "Lab Manuals",    url: "https://drive.google.com/drive/folders/1BDwIALLkuRs4TPLbOR2Tr4x6MPh_ek2q?usp=sharing" },
         ],
         videos: [],
