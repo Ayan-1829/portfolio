@@ -22,6 +22,11 @@ function toggleProfile() {
 
   Render.hero(mode);
 
+  // Track art profile views
+  if (isArtMode && typeof trackArtProfileView === 'function') {
+    trackArtProfileView();
+  }
+
   // Update cursor for the new mode
   if (typeof updateCursorForMode === 'function') {
     updateCursorForMode(mode);
