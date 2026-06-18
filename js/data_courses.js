@@ -97,7 +97,7 @@ const DATA_COURSES = [
           { label: "Old Lab Manuals",                 url: "https://drive.google.com/drive/folders/1b4tcoBlbepTmAcZRNuLce4RHVOhgrFWt?usp=sharing" },
         ],
         videos: [
-          { title: "Installing Logisim Simulator", url: "https://www.youtube.com/watch?v=NyDYmY5pIxM" },
+          { title: "Installing Logisim Simulator", url: "https://www.youtube.com/embed/NyDYmY5pIxM" },
         ],
       },
 
