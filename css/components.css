@@ -355,11 +355,33 @@ footer span { color: var(--accent); transition: color var(--theme-transition); }
   border: none;
   background: none;
   padding: 0;
-  box-shadow: 0 6px 24px rgba(0,0,0,0.3);
-  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.3),
+    0 0 0 6px color-mix(in srgb, var(--accent) 22%, transparent),
+    0 0 18px 10px color-mix(in srgb, var(--accent) 25%, transparent);
+  transition: transform 0.2s;
+  animation: floatingTogglePulse 2.6s ease-in-out infinite;
 }
 
-.floating-toggle:hover { transform: translateY(-3px); box-shadow: 0 10px 32px rgba(0,0,0,0.4); }
+.floating-toggle:hover {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 12px 36px rgba(0,0,0,0.45),
+    0 0 0 8px color-mix(in srgb, var(--accent) 32%, transparent),
+    0 0 26px 14px color-mix(in srgb, var(--accent) 35%, transparent);
+  animation-play-state: paused;
+}
+
+@keyframes floatingTogglePulse {
+  0%, 100% {
+    box-shadow: 0 6px 24px rgba(0,0,0,0.3),
+      0 0 0 6px color-mix(in srgb, var(--accent) 22%, transparent),
+      0 0 18px 10px color-mix(in srgb, var(--accent) 25%, transparent);
+  }
+  50% {
+    box-shadow: 0 8px 30px rgba(0,0,0,0.35),
+      0 0 0 10px color-mix(in srgb, var(--accent) 14%, transparent),
+      0 0 30px 18px color-mix(in srgb, var(--accent) 15%, transparent);
+  }
+}
 
 .floating-toggle-inner {
   display: flex;
@@ -369,11 +391,13 @@ footer span { color: var(--accent); transition: color var(--theme-transition); }
   border-radius: 50px;
   background: var(--accent);
   color: var(--bg);
-  transition: background 0.5s, color 0.5s;
+  transition: background 0.5s, color 0.5s, transform 0.2s;
 }
 
+.floating-toggle:active .floating-toggle-inner { transform: scale(0.96); }
+
 .floating-emoji { font-size: 1.3rem; line-height: 1; flex-shrink: 0; }
-.floating-text  { font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; font-family: var(--font-body); white-space: nowrap; }
+.floating-text  { font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; font-family: var(--font-body); white-space: nowrap; font-weight: 600; }
 
 /* ── Course Cards ─────────────────────────────── */
 .course-card-code { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.4rem; transition: color var(--theme-transition); }
