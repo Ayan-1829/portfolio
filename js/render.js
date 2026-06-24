@@ -164,7 +164,7 @@ const Render = {
     grid.innerHTML = projects.map((p, idx) => {
       const techPills = p.tech.map(t => `<span class="skill-pill" style="font-size:0.72rem;padding:0.2rem 0.6rem;">${t}</span>`).join('');
       const bullets = p.bullets.map(b => `<li style="color:var(--muted);font-size:0.9rem;line-height:1.7;margin-bottom:0.25rem;">${b}</li>`).join('');
-      const linksHTML = (p.links || []).map(l => `<a href="${l.url}" target="_blank" class="course-link-pill">${l.label} ↗</a>`).join('');
+      const linksHTML = (p.links || []).filter(l => l.url).map(l => `<a href="${l.url}" target="_blank" class="course-link-pill">${l.label} ↗</a>`).join('');
       const hasDetails = (p.videos && p.videos.length) || (p.info && p.info.length);
       const detailsBtn = hasDetails
         ? `<button class="course-card-footer" style="background:none;border:none;cursor:pointer;padding:0;text-align:left;" onclick="openProjectModal(${idx})">View Details →</button>`
@@ -289,7 +289,10 @@ function openCourseModal(index) {
     /* Support both plain string and object topics */
     if (typeof t === 'string') return `<li class="topic-item"><span class="topic-name">${t}</span></li>`;
     const linkBtns = (t.links || []).map(l =>
-      `<a href="${l.url}" target="_blank" class="topic-link">🔗 ${l.label}</a>`).join('');
+      l.url
+        ? `<a href="${l.url}" target="_blank" class="topic-link">🔗 ${l.label}</a>`
+        : `<span class="topic-link topic-link--disabled">${l.label}</span>`
+    ).join('');
     /* Support both `video` (single) and `videos` (array of 0 or more) */
     const videoList = t.videos && t.videos.length
       ? t.videos
@@ -308,7 +311,7 @@ function openCourseModal(index) {
     return `<li class="topic-item"><span class="topic-name">${t.name}</span>${resources}${videoSlots}</li>`;
   }).join('');
 
-  const linksHTML  = (course.links  || []).map(l => `<a href="${l.url}" target="_blank" class="course-link-pill">${l.label} ↗</a>`).join('');
+  const linksHTML  = (course.links  || []).filter(l => l.url).map(l => `<a href="${l.url}" target="_blank" class="course-link-pill">${l.label} ↗</a>`).join('');
   const videosHTML = (course.videos || []).map(v => `
     <div class="course-video-wrap">
       <iframe src="${v.url}" title="${v.title}" frameborder="0"
@@ -406,7 +409,7 @@ function openAchievementModal(index) {
 
   // Support new array (achievementLinks) AND legacy (certificateLinks)
   const links = entry.achievementLinks || entry.certificateLinks || [];
-  const linksHTML = links.map(l =>
+  const linksHTML = links.filter(l => l.url).map(l =>
     `<a href="${l.url}" target="_blank" class="course-link-pill">🏆 ${l.label} ↗</a>`
   ).join('');
 
@@ -450,7 +453,7 @@ function openProjectModal(index) {
   if (!modal || !body) return;
 
   const techPills = p.tech.map(t => `<span class="skill-pill" style="font-size:0.75rem;padding:0.2rem 0.6rem;">${t}</span>`).join('');
-  const linksHTML = (p.links || []).map(l =>
+  const linksHTML = (p.links || []).filter(l => l.url).map(l =>
     `<a href="${l.url}" target="_blank" class="course-link-pill">${l.label} ↗</a>`).join('');
   const infoHTML = (p.info || []).map(s =>
     `<p style="color:var(--muted);font-size:0.9rem;line-height:1.7;margin:0.4rem 0;">${s}</p>`).join('');
