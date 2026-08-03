@@ -102,6 +102,32 @@ const DATA_COURSES = [
       },
 
       {
+        code:        "CSE 302",
+        title:       "Web Programming Lab",
+        credits:     "1.5",
+        semester:    "Summer 2026",
+        emoji:       "",
+        description: "Implementing the principles of Web Programming using HTML, CSS, and JavaScript.",
+        topics: [
+          { name: "Creating, Displaying HTML Pages Using Basic HTML tags",                          links: null, video: null },
+          { name: "Using HTML tags to create Lists and Tables",                                     links: null, video: null },
+          { name: "Create and design interactive FORMS using HTML and CSS",                         links: null, video: null },
+          { name: "Designing Web Pages Using CSS",                                                  links: null, video: null },
+          { name: "Implementation of Page Layout in CSS",                                           links: null, video: null },
+          { name: "Introduction to JavaScript (JS) Advanced Topics",                                links: null, video: null },
+          { name: "Implementing AJAX and JSON in Web Development",                                  links: null, video: null },
+          { name: "PHP form handling and Introduction of MySQL",                                    links: null, video: null },
+          { name: "Implementation of Database Connection, Data Retrieval and Updating with PHP",    links: null, video: null },
+          { name: "Responsive Web Design with Bootstrap",                                           links: null, video: null },
+        ],
+        links: [
+          { label: "Course Outline - Summer 2026", url: "https://drive.google.com/file/d/1459DNEMg8jo-a5s8mOfCdxzGhC1lCk55/view?usp=sharing" },
+          { label: "Lab Manuals",    url: "https://drive.google.com/file/d/1bkVDlMalIh0Z3nVahMawwgL7eD1VLMI0/view?usp=sharing" },
+        ],
+        videos: [],
+      },
+
+      {
         code:        "CSE 312/308",
         title:       "Data Communication Lab",
         credits:     "1",
