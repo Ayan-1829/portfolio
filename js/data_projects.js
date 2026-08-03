@@ -11,13 +11,26 @@
 
 const DATA_PROJECTS = [
   {
+    title:   "Logic-Bench",
+    tech:    ["HTML", "CSS", "JavaScript", "Claude AI"],
+    date:    "August 2026",
+    bullets: [
+      "Design and simulate digital logic circuits using basic logic gates.",
+      "Practice with interactive tutorials and logic problems for hands-on learning.",
+      "Built for education, helping users understand digital logic design concepts.",
+    ],
+    links:  [ { label: "Try Logic-Bench", url: "https://logic-bench.netlify.app" } ],
+    videos: null,
+    info:   [],
+  },
+  {
     title:   "Daily Life",
     tech:    ["HTML", "CSS", "JavaScript", "Firebase", "Claude AI"],
     date:    "May 2026",
     bullets: [
-      "Daily life management web application with a responsive design, allowing users to create and manage tasks, money management, and goals.",
-      "Visualise task completion and financial data through interactive charts, providing insights into daily habits and spending patterns.",
-      "Tracks good habits and bad habits",
+      "Responsive web application for task, finance, and goal management.",
+      "Visualizes task progress and financial data through interactive charts.",
+      "Tracks daily habits, including good and bad habits.",
     ],
     links:  [ { label: "Try for free", url: "https://daily-life-management.web.app" } ],
     videos: null,
@@ -62,5 +75,16 @@ const DATA_PROJECTS = [
     videos: [],
     info:   [],
   },
-   
+  // {
+  //   title:   "FPGA-based Deflate Data Compression",
+  //   tech:    ["Verilog", "FPGA", "Vivado"],
+  //   date:    "Jun 2024 – Jun 2025",
+  //   bullets: [
+  //     "Undergraduate thesis: hardware implementation of the Deflate data compression algorithm on an FPGA.",
+  //     "Explored VLSI design principles and resource-constrained computing for efficient data compression.",
+  //   ],
+  //   links:  [ { label: "GitHub", url: "https://github.com/ayan-1829" } ],
+  //   videos: [],
+  //   info:   [],
+  // },
 ];
