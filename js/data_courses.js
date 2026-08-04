@@ -123,6 +123,7 @@ const DATA_COURSES = [
         links: [
           { label: "Course Outline - Summer 2026", url: "https://drive.google.com/file/d/1459DNEMg8jo-a5s8mOfCdxzGhC1lCk55/view?usp=sharing" },
           { label: "Lab Manuals",    url: "https://drive.google.com/file/d/1bkVDlMalIh0Z3nVahMawwgL7eD1VLMI0/view?usp=sharing" },
+          { label: "Old Lab Manuals", url: "https://drive.google.com/file/d/17hyx-0tYiNjUA9CBUKBAj4AfPeBVfO_s/view?usp=sharing" },
         ],
         videos: [],
       },
@@ -148,8 +149,9 @@ const DATA_COURSES = [
           { name: "Implementation of analog to digital conversion and pulse coded transmission.", links: null,                                                                                                                                                       video: null },
         ],
         links: [
-          { label: "Course Outline - Spring 2026", url: "https://drive.google.com/file/d/1eOmsADCYw2wTDClaK2LYWw6f1eMbFQSc/view?usp=sharing" },
-          { label: "Lab Manuals",    url: "https://drive.google.com/drive/folders/1PrdV0QCES58caP1IynnWnIZzWxogQA4C?usp=sharing" },
+          { label: "Course Outline - Spring 2026",  url: "https://drive.google.com/file/d/1eOmsADCYw2wTDClaK2LYWw6f1eMbFQSc/view?usp=sharing" },
+          { label: "Lab Manuals",                   url: "https://drive.google.com/drive/folders/1PrdV0QCES58caP1IynnWnIZzWxogQA4C?usp=sharing" },
+          { label: "Old Lab Manuals",               url: "https://drive.google.com/drive/folders/1fMsoTvJW8yzuhwKrWTzn77i3IvvQIbJN?usp=sharing" },
         ],
         videos: [],
       },
