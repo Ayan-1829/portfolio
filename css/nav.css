@@ -22,17 +22,38 @@ nav {
 
 /* ── Logo ─────────────────────────────────────── */
 .nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.nav-logo-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  object-fit: cover;
+  display: block;
+  flex-shrink: 0;
+}
+
+.nav-logo-text {
   font-family: var(--font-display);
   font-size: 1.3rem;
   font-weight: 800;
   letter-spacing: 0.02em;
   color: var(--accent);
   transition: color var(--theme-transition), font-family 0.4s;
+  white-space: nowrap;
 }
 
-body.art-mode .nav-logo {
+body.art-mode .nav-logo-text {
   font-family: var(--font-hand);
   font-size: 1.6rem;
+}
+
+@media (max-width: 480px) {
+  .nav-logo-img { width: 32px; height: 32px; }
+  .nav-logo-text { font-size: 1.05rem; }
 }
 
 /* ── Links ────────────────────────────────────── */
@@ -149,7 +170,7 @@ body.art-mode .toggle-label.art-lbl {
 }
 
 /* ── Responsive ───────────────────────────────── */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   nav { padding: 1rem 1.5rem; }
   .nav-links { display: none; }
 }
@@ -180,7 +201,7 @@ body.art-mode .toggle-label.art-lbl {
 .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 /* ── Mobile Nav Menu ──────────────────────────── */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .hamburger { display: flex; }
 
   .nav-links {
