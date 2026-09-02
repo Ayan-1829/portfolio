@@ -11,7 +11,8 @@
 
 const DATA_PROJECTS = [
   {
-    title:   "Logic-Bench",
+    title:   "Gate Forge",
+    icon:    "GateForge_icon.png",
     tech:    ["HTML", "CSS", "JavaScript", "Claude AI"],
     date:    "August 2026",
     bullets: [
@@ -19,12 +20,13 @@ const DATA_PROJECTS = [
       "Practice with interactive tutorials and logic problems for hands-on learning.",
       "Built for education, helping users understand digital logic design concepts.",
     ],
-    links:  [ { label: "Try Logic-Bench", url: "https://logic-bench.netlify.app" } ],
-    videos: null,
+    links:  [ { label: "Try Gate Forge", url: "https://logic-bench.netlify.app" } ],
+    videos: [ { title: "Introduction to Gate Forge", url: "https://www.youtube.com/embed/KIAhm2HdJIc" } ],
     info:   [],
   },
   {
     title:   "Daily Life",
+    icon:    "DailyLife_icon.png",
     tech:    ["HTML", "CSS", "JavaScript", "Firebase", "Claude AI"],
     date:    "May 2026",
     bullets: [
