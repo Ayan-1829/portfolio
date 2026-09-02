@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ayan Sarkar — Portfolio</title>
+  <title>Ayan Sarkar</title>
   <link rel="icon" id="favicon" type="image/png" href=""/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -20,7 +20,7 @@
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">AS</div>
+  <div class="nav-logo"><img src="images/Ayan_Logo.png" alt="Ayan Sarkar" class="nav-logo-img"/><span class="nav-logo-text">Ayan Sarkar</span></div>
   <ul class="nav-links" id="nav-links">
     <li class="nav-academic-only"><a href="#about"      onclick="closeMenu()">About</a></li>
     <li class="nav-academic-only"><a href="#experience" onclick="closeMenu()">Experience</a></li>
@@ -201,14 +201,22 @@
     const c = document.createElement('canvas');
     c.width = c.height = 64;
     const ctx = c.getContext('2d');
-    ctx.fillStyle = '#c9a84c';
-    ctx.beginPath(); ctx.arc(32, 32, 32, 0, Math.PI * 2); ctx.fill();
-    ctx.fillStyle = '#0d1b2e';
-    ctx.font = 'bold 26px serif';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.fillText('AS', 32, 33);
-    document.getElementById('favicon').href = c.toDataURL('image/png');
+    const img = new Image();
+    img.onload = function() {
+      ctx.drawImage(img, 0, 0, 64, 64);
+      document.getElementById('favicon').href = c.toDataURL('image/png');
+    };
+    img.onerror = function() {
+      ctx.fillStyle = '#c9a84c';
+      ctx.beginPath(); ctx.arc(32, 32, 32, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = '#0d1b2e';
+      ctx.font = 'bold 26px serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('AS', 32, 33);
+      document.getElementById('favicon').href = c.toDataURL('image/png');
+    };
+    img.src = 'images/Ayan_Logo.png';
   })();
 
   /* ── Download CV (academic only) ──────────────── */
