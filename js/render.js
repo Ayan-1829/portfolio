@@ -1,8 +1,8 @@
 const Render = {
 
   nav() {
-    const logo = document.querySelector('.nav-logo');
-    if (logo) logo.textContent = 'AS';
+    const logoText = document.querySelector('.nav-logo-text');
+    if (logoText) logoText.textContent = 'Ayan Sarkar';
   },
 
   hero(mode = 'academic') {
@@ -169,10 +169,13 @@ const Render = {
       const detailsBtn = hasDetails
         ? `<button class="course-card-footer" style="background:none;border:none;cursor:pointer;padding:0;text-align:left;" onclick="openProjectModal(${idx})">View Details →</button>`
         : '';
+      const iconHTML = p.icon
+        ? `<img src="images/${p.icon}" alt="${p.title} icon" style="width:2rem;height:2rem;object-fit:contain;border-radius:6px;flex-shrink:0;"/>`
+        : '';
       return `
         <div class="card" style="display:flex;flex-direction:column;gap:0.6rem;">
           <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:0.5rem;flex-wrap:wrap;">
-            <div class="card-title">${p.title}</div>
+            <div style="display:flex;align-items:center;gap:0.6rem;">${iconHTML}<div class="card-title">${p.title}</div></div>
             <span style="color:var(--muted);font-size:0.78rem;white-space:nowrap;">${p.date}</span>
           </div>
           <div style="display:flex;flex-wrap:wrap;gap:0.4rem;">${techPills}</div>
@@ -464,10 +467,14 @@ function openProjectModal(index) {
       <p class="course-video-title">${v.title}</p>
     </div>`).join('');
 
+  const modalIconHTML = p.icon
+    ? `<img src="images/${p.icon}" alt="${p.title} icon" style="width:2.4rem;height:2.4rem;object-fit:contain;border-radius:6px;flex-shrink:0;"/>`
+    : '';
+
   body.innerHTML = `
     <div class="course-modal-header" style="flex-direction:column;align-items:flex-start;gap:0.5rem;">
       <div class="course-modal-code">${p.date}</div>
-      <h2 class="course-modal-title">${p.title}</h2>
+      <div style="display:flex;align-items:center;gap:0.6rem;">${modalIconHTML}<h2 class="course-modal-title" style="margin:0;">${p.title}</h2></div>
       <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:0.3rem;">${techPills}</div>
     </div>
     ${linksHTML ? `<div class="course-modal-section"><h3>Links</h3><div class="course-links-row">${linksHTML}</div></div>` : ''}
