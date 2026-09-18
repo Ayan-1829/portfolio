@@ -12,7 +12,7 @@
 const DATA_PROJECTS = [
   {
     title:   "Inside the Computer",
-    icon:    "InsideTheComputer_icon.svg",
+    icon:    "InsideTheComputer_icon.png",
     tech:    ["HTML", "CSS", "JavaScript", "Python", "Claude AI"],
     date:    "October 2026",
     bullets: [
