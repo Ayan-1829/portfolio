@@ -276,7 +276,7 @@ const Render = {
   all(mode = 'academic') {
     this.nav(); this.hero(mode); this.about();
     this.experience(); this.education(); this.skills();
-    this.courses(); this.projects(); this.artJourney(); this.artPractice();
+    this.projects(); this.courses(); this.artJourney(); this.artPractice();
     this.gallery(); this.contact(); this.footer();
   },
 };
