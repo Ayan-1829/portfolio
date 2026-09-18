@@ -11,6 +11,24 @@
 
 const DATA_PROJECTS = [
   {
+    title:   "Inside the Computer",
+    icon:    "InsideTheComputer_icon.svg",
+    tech:    ["HTML", "CSS", "JavaScript", "Python", "Claude AI"],
+    date:    "October 2026",
+    bullets: [
+      "Interactive web application that visualizes the inner workings of a computer.",
+      "Users can explore components like CPU, RAM, and storage, and understand their functions.",
+      "Includes simulations of data flow and processing within the computer with example of 8086 microprocessor.",
+    ],
+    links:  [ 
+      { label: "Explore Inside the Computer", url: "https://ayan-1829.github.io/inside-the-computer/" },
+      { label: "GitHub", url: "https://github.com/ayan-1829/inside-the-computer" }
+    ],
+    videos: [ { title: "Inside the Computer", url: "https://www.youtube.com/embed/luX3juPvRMw" } ],
+    info:   [],
+
+  },
+  {
     title:   "Gate Forge",
     icon:    "GateForge_icon.webp",
     tech:    ["HTML", "CSS", "JavaScript", "Claude AI"],
