@@ -180,13 +180,17 @@ const Render = {
       /* stopPropagation so following a link doesn't also open the modal */
       const linksHTML = (p.links || []).filter(l => l.url).map(l =>
         `<a href="${l.url}" target="_blank" class="course-link-pill" onclick="event.stopPropagation()">${l.label} ↗</a>`).join('');
+      const ogImageHTML = p.ogImage
+        ? `<img src="images/${p.ogImage}" alt="${p.title}" style="width:100%;height:auto;max-height:350px;object-fit:contain;border-radius:8px;margin-bottom:0.8rem;"/>`
+        : '';
       const iconHTML = p.icon
         ? `<img src="images/${p.icon}" alt="${p.title} icon" style="width:2rem;height:2rem;object-fit:contain;border-radius:6px;flex-shrink:0;"/>`
         : '';
       return `
         <div class="card project-card" onclick="openProjectModal(${idx})" style="display:flex;flex-direction:column;gap:0.6rem;cursor:pointer;">
+          <div class="project-card-titlewrap">${iconHTML}<div class="card-title">${p.title}</div></div>
+          ${ogImageHTML}
           <div class="project-card-head">
-            <div class="project-card-titlewrap">${iconHTML}<div class="card-title">${p.title}</div></div>
             <span style="color:var(--muted);font-size:0.78rem;white-space:nowrap;">${p.date}</span>
           </div>
           <div style="display:flex;flex-wrap:wrap;gap:0.4rem;">${techPills}</div>

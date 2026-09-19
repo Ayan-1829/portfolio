@@ -37,6 +37,17 @@ body.art-mode .section-title {
   gap: 1.5rem;
 }
 
+#projects-grid {
+  grid-template-columns: repeat(2, minmax(400px, 1fr));
+  gap: 2rem;
+}
+
+@media (max-width: 900px) {
+  #projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .card {
   background: var(--card);
   border: 1px solid var(--border);
