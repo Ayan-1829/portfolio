@@ -878,13 +878,13 @@ body.art-mode .uni-group-name {
 
 .entry-head {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 1rem;
   margin-bottom: 0.6rem;
 }
 
-.edu-timeline .entry-head {
-  align-items: flex-start;
+.org-logo {
+  margin-top: 2px;
 }
 
 /* Base logo box. --org-logo-scale lets a single logo be nudged smaller
