@@ -883,10 +883,6 @@ body.art-mode .uni-group-name {
   margin-bottom: 0.6rem;
 }
 
-.org-logo {
-  margin-top: 4px;
-}
-
 /* Base logo box. --org-logo-scale lets a single logo be nudged smaller
    or larger than the rest, set per entry via `logoScale` in the data. */
 .org-logo {
@@ -904,11 +900,8 @@ body.art-mode .uni-group-name {
    `logoScale` in the data file still applies on top of it. */
 .entry-logo {
   --org-logo-size: 56px;
-  margin-top: 0;              /* centred on the block, so no optical nudge */
-}
-
-.edu-logo {
-  filter: drop-shadow(0 6px 16px rgba(135, 206, 235, 0.7));
+  margin-top: 6px;            /* lowers the logo slightly from the top of the text */
+  filter: drop-shadow(0 0 18px rgba(135, 206, 235, 0.75));
 }
 
 .entry-head-text {
