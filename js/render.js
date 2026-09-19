@@ -188,11 +188,11 @@ const Render = {
         : '';
       return `
         <div class="card project-card" onclick="openProjectModal(${idx})" style="display:flex;flex-direction:column;gap:0.6rem;cursor:pointer;">
-          <div class="project-card-titlewrap">${iconHTML}<div class="card-title">${p.title}</div></div>
-          ${ogImageHTML}
-          <div class="project-card-head">
-            <span style="color:var(--muted);font-size:0.78rem;white-space:nowrap;">${p.date}</span>
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;">
+            <div class="project-card-titlewrap">${iconHTML}<div class="card-title">${p.title}</div></div>
+            <span style="color:var(--muted);font-size:0.78rem;white-space:nowrap;flex-shrink:0;">${p.date}</span>
           </div>
+          ${ogImageHTML}
           <div style="display:flex;flex-wrap:wrap;gap:0.4rem;">${techPills}</div>
           <ul style="margin:0;padding-left:1.2rem;">${bullets}</ul>
           ${linksHTML ? `<div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-top:0.2rem;">${linksHTML}</div>` : ''}
