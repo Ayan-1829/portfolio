@@ -901,7 +901,11 @@ body.art-mode .uni-group-name {
 .entry-logo {
   --org-logo-size: 56px;
   margin-top: 6px;            /* lowers the logo slightly from the top of the text */
-  filter: drop-shadow(0 0 18px rgba(135, 206, 235, 0.75));
+}
+
+.entry-logo,
+.project-card-icon {
+  filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.95));
 }
 
 .entry-head-text {

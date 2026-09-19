@@ -36,6 +36,7 @@ nav {
   object-fit: cover;
   display: block;
   flex-shrink: 0;
+  filter: drop-shadow(3px 3px 4px rgba(0, 0, 0, 0.75));
 }
 
 .nav-logo-text {
@@ -46,6 +47,7 @@ nav {
   color: var(--accent);
   transition: color var(--theme-transition), font-family 0.4s;
   white-space: nowrap;
+  text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.95);
 }
 
 body.art-mode .nav-logo-text {

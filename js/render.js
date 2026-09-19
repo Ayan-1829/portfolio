@@ -184,7 +184,7 @@ const Render = {
         ? `<img src="images/${p.ogImage}" alt="${p.title}" style="width:100%;height:auto;max-height:350px;object-fit:contain;border-radius:8px;margin-bottom:0.8rem;"/>`
         : '';
       const iconHTML = p.icon
-        ? `<img src="images/${p.icon}" alt="${p.title} icon" style="width:2rem;height:2rem;object-fit:contain;border-radius:6px;flex-shrink:0;"/>`
+        ? `<img src="images/${p.icon}" alt="${p.title} icon" class="project-card-icon" style="width:2rem;height:2rem;object-fit:contain;border-radius:6px;flex-shrink:0;"/>`
         : '';
       return `
         <div class="card project-card" onclick="openProjectModal(${idx})" style="display:flex;flex-direction:column;gap:0.6rem;cursor:pointer;">
