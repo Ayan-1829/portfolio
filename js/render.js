@@ -402,9 +402,9 @@ function openCourseModal(index) {
   const course = (window._allCourses || [])[index];
   if (!course) return;
 
-  // Track which course was viewed
-  if (typeof trackCourseView === 'function') {
-    trackCourseView(course.code, course.title);
+  // Count which course was opened (analytics.js provides trackEvent)
+  if (typeof window.trackEvent === 'function') {
+    window.trackEvent('course_view', [course.code, course.title].filter(Boolean).join(' '));
   }
 
   const modal  = document.getElementById('courseModal');

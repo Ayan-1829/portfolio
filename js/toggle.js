@@ -21,9 +21,9 @@ function toggleProfile() {
 
   Render.hero(mode);
 
-  // Track art profile views
-  if (isArtMode && typeof trackArtProfileView === 'function') {
-    trackArtProfileView();
+  // Count art profile views (analytics.js provides trackEvent)
+  if (isArtMode && typeof window.trackEvent === 'function') {
+    window.trackEvent('art_profile_view');
   }
 
   // Update cursor for the new mode
