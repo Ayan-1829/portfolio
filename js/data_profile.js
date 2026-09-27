@@ -51,5 +51,4 @@ const DATA_CONTACT = {
     { label: "Facebook", url: "https://www.facebook.com/ayan.sarkar.1829507", icon: "facebook", emoji: "📘" },
     { label: "YouTube",  url: "https://www.youtube.com/@ayansarkar1829",      icon: "youtube",  emoji: "▶️" },
   ],
-  googleSheetsUrl: "https://script.google.com/macros/s/AKfycbyIrxgecMRUecUyO064Ylq9lIOqXv5kUKy5uqSiVA9yIrzDst4LdKPWBCJX4Styf3lj/exec",
 };

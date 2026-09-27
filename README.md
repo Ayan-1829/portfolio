@@ -11,7 +11,7 @@ A personal portfolio website for **Ayan Sarkar**, Lecturer in the Department of 
 - **Dual Profile Toggle** — Switch between Academic and Art profiles with a floating button
 - **Academic Profile** — Experience, Education, Skills, Courses (with topic resources & video lectures), and Projects
 - **Art Profile** — Gallery lightbox, Art Journey timeline with achievement images, Art Practice
-- **Contact Form** — Integrated with Google Sheets via Apps Script
+- **Contact Form** — Messages are stored in a private Google Sheet, through a Cloudflare Worker that keeps the Sheet's secret out of this public code
 - **Responsive Design** — Mobile-friendly layout with hamburger nav
 - **Custom Cursor** — Ink/brush effects matching the profile mode
 - **CV Download** — Direct download of the resume PDF

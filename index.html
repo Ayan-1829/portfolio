@@ -241,16 +241,18 @@
     <form class="contact-form" id="contactForm" onsubmit="submitForm(event)">
       <div class="form-field">
         <label for="form-name">Your Name</label>
-        <input id="form-name" name="name" type="text" placeholder="John Doe" required/>
+        <input id="form-name" name="name" type="text" maxlength="100" placeholder="John Doe" required/>
       </div>
       <div class="form-field">
         <label for="form-email">Email Address</label>
-        <input id="form-email" name="email" type="email" placeholder="you@example.com" required/>
+        <input id="form-email" name="email" type="email" maxlength="200" placeholder="you@example.com" required/>
       </div>
       <div class="form-field">
         <label for="form-msg">Message</label>
-        <textarea id="form-msg" name="message" rows="5" placeholder="Your message here..." required></textarea>
+        <textarea id="form-msg" name="message" rows="5" maxlength="3000" placeholder="Your message here..." required></textarea>
       </div>
+      <!-- left empty by people; bots that fill every field are ignored -->
+      <input name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
       <button type="submit" class="btn btn-primary" id="form-submit" style="align-self:flex-start;">Send Message</button>
       <p id="form-status" style="font-size:0.85rem;margin-top:0.5rem;display:none;"></p>
     </form>
@@ -304,32 +306,37 @@
     }
   }
 
-  /* ── Contact form → Google Sheets ─────────────── */
+  /* ── Contact form → the analytics Sheet ("Contact messages" tab) ──
+     Sent through the same Cloudflare Worker as the analytics (its address is on
+     the analytics.js script tag). The Worker holds the Sheet's secret and only
+     answers {contact:true} once the message is really stored. */
   async function submitForm(e) {
     e.preventDefault();
     const form   = document.getElementById('contactForm');
     const btn    = document.getElementById('form-submit');
     const status = document.getElementById('form-status');
-    const url    = PORTFOLIO_DATA.contact.googleSheetsUrl;
-    if (!url || url === 'YOUR_GOOGLE_APPS_SCRIPT_URL') {
-      status.style.display = 'block';
-      status.style.color   = 'var(--muted)';
-      status.textContent   = '⚠ Paste your Google Apps Script URL in data.js → contact.googleSheetsUrl';
-      return;
-    }
-    btn.textContent = 'Sending…'; btn.disabled = true; status.style.display = 'none';
+    const tag    = document.querySelector('script[data-endpoint][data-project]');
+    const say = (text, color) => { status.style.display = 'block'; status.style.color = color; status.textContent = text; };
+    if (!tag) { say('✗ Something went wrong. Please email me directly.', 'tomato'); return; }
     const data = new FormData(form);
-    const body = JSON.stringify({ name: data.get('name'), email: data.get('email'), message: data.get('message'), timestamp: new Date().toLocaleString() });
+    btn.textContent = 'Sending…'; btn.disabled = true; status.style.display = 'none';
+    const ctrl = new AbortController(), timer = setTimeout(() => ctrl.abort(), 15000);
     try {
-      await fetch(url, { method: 'POST', body, mode: 'no-cors' });
-      status.style.display = 'block'; status.style.color = 'var(--accent)';
-      status.textContent = "✓ Message sent! I'll get back to you soon.";
+      const res = await fetch(tag.dataset.endpoint, {
+        method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, signal: ctrl.signal,
+        body: JSON.stringify({ project: tag.dataset.project, event: 'contact', name: data.get('name'), email: data.get('email'),
+          message: data.get('message'), website: data.get('website'), page: location.pathname })
+      });
+      const j = await res.json().catch(() => null);
+      if (!res.ok || !j || j.contact !== true) throw new Error('not stored');
+      say("✓ Message sent! I'll get back to you soon.", 'var(--accent)');
       form.reset();
     } catch {
-      status.style.display = 'block'; status.style.color = 'tomato';
-      status.textContent = '✗ Something went wrong. Please email me directly.';
+      say('✗ Something went wrong. Please try again, or email me directly.', 'tomato');
+    } finally {
+      clearTimeout(timer);
+      btn.textContent = 'Send Message'; btn.disabled = false;
     }
-    btn.textContent = 'Send Message'; btn.disabled = false;
   }
 
   /* ── Back button: use pushState only for real section navigations ──
