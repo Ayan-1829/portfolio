@@ -76,10 +76,40 @@ const DATA_COURSES = [
       },
 
       {
+        code:        "CSE 203",
+        title:       "Digital Logic Design",
+        credits:     "3",
+        semesters:   ["Fall 2026"],
+        emoji:       "",
+        description: "Number systems, logic gates, minimization techniques, arithmetic circuits, flip-flops, and sequential circuits, including combinational and sequential circuit design.",
+        topics: [
+          { name: "Introduction to the course, Introduction to number systems and conversions",                          links: null, video: null },
+          { name: "Signed Binary numbers, Binary codes, BCD addition, Gray code",                                        links: null, video: null },
+          { name: "Boolean Algebra, DeMorgan's theorem, Canonical forms, Digital logic gates",                           links: null, video: null },
+          { name: "Universal gate, K-Map, Don't care condition",                                                        links: null, video: null },
+          { name: "Combinational Logic, Adder, Subtractor, BCD Adder, Magnitude Comparator",                             links: null, video: null },
+          { name: "Decoders, Encoders, Multiplexers, Demultiplexers",                                                    links: null, video: null },
+          { name: "Synchronous Circuits, Latches, Flip-flops, Clocked sequential circuits",                              links: null, video: null },
+          { name: "State reduction, Design procedure",                                                                   links: null, video: null },
+          { name: "Ripple Counters, Parallel Counters, Up-Down Counter, MOD counter, Other counters",                    links: null, video: null },
+          { name: "Random Access Memory, Memory Decoding",                                                               links: null, video: null },
+          { name: "Read Only Memory, Programmable Logic Array, Programmable Array Logic",                                links: null, video: null },
+        ],
+        links: [
+          { label: "Course Outline - Fall 2026", url: "https://drive.google.com/drive/folders/1sobEIJ6H9GI5iCzADdVi_Y3smqB3E2-3?usp=sharing" },
+          { label: "Books",                      url: "https://drive.google.com/drive/folders/1sobEIJ6H9GI5iCzADdVi_Y3smqB3E2-3?usp=sharing" },
+          { label: "Midterm Slides",             url: "https://drive.google.com/drive/folders/14ccqb6niGMt2YP0chjBpSqF7yONoUgf5?usp=sharing" },
+          { label: "Final Slides",               url: "https://drive.google.com/drive/folders/1NwwMMVCQ3ZGuPWRn5SO4PjywdUsoUAfM?usp=sharing" },
+          { label: "Interactive Slides",         url: "https://ayan-1829.github.io/digital-logic-design/" },
+        ],
+        videos: [],
+      },
+
+      {
         code:        "CSE 204",
         title:       "Digital Logic Design Lab",
         credits:     "1",
-        semesters:   ["Fall 2025", "Summer 2026"],
+        semesters:   ["Fall 2025", "Summer 2026", "Fall 2026"],
         emoji:       "",
         description: "Implementing the principles of Digital Logic Gates using ICs.",
         topics: [
@@ -95,13 +125,13 @@ const DATA_COURSES = [
           { name: "Design the Mod 6 counter using D–Flip-Flop",                                                                         links: null,                                                                                                                                video: null },
         ],
         links: [
-          { label: "Course Outline - Summer 2026",    url: "https://drive.google.com/file/d/1He14X841leQDyoJ9pDyeKNZJUliqJFxh/view" },
-          { label: "New Lab Manual",                  url: "https://drive.google.com/file/d/14_g-oYgYxR03BjFk_IjLQ2JvluaTu-oC/view" },
-          { label: "Course Outline - Fall 2025",      url: "https://drive.google.com/file/d/17hyx-0tYiNjUA9CBUKBAj4AfPeBVfO_s/view?usp=sharing" },
-          { label: "Old Lab Manuals",                 url: "https://drive.google.com/drive/folders/1b4tcoBlbepTmAcZRNuLce4RHVOhgrFWt?usp=sharing" },
+          { label: "Course Outline - Fall 2026",            url: "https://drive.google.com/file/d/17cCYNOPRP2BoqD5yerNCj84bPcSoeiEa/view?usp=sharing" },
+          { label: "New Lab Manual",                        url: "https://drive.google.com/file/d/14_g-oYgYxR03BjFk_IjLQ2JvluaTu-oC/view" },
+          { label: "Old Lab Manuals",                       url: "https://drive.google.com/drive/folders/1b4tcoBlbepTmAcZRNuLce4RHVOhgrFWt?usp=sharing" },
+          { label: "Gate Forge - Digital Logic Simulator",  url: "https://gate-forge.netlify.app" },
         ],
         videos: [
-          { title: "Installing Logisim Simulator", url: "https://www.youtube.com/embed/NyDYmY5pIxM" },
+          { title: "Introduction to Gate Forge", url: "https://youtu.be/KIAhm2HdJIc?si=SHD5tslqjm_Zbcbv" },
         ],
       },
 
