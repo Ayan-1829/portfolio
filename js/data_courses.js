@@ -186,7 +186,7 @@ const DATA_COURSES = [
       },
 
       {
-        code:        "CSE 312/308",
+        code:        "CSE 312",
         title:       "Data Communication Lab",
         credits:     "1",
         semesters:   ["Spring 2026"],
