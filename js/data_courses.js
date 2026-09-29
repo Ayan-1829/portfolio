@@ -76,7 +76,7 @@ const DATA_COURSES = [
       },
 
       {
-        code:        "CSE 203",
+        code:        "CSE 203/SWE 109",
         title:       "Digital Logic Design",
         credits:     "3",
         semesters:   ["Fall 2026"],
@@ -159,6 +159,29 @@ const DATA_COURSES = [
           { label: "Lab Manuals",    url: "https://drive.google.com/file/d/1bkVDlMalIh0Z3nVahMawwgL7eD1VLMI0/view?usp=sharing" },
           { label: "Old Lab Manuals", url: "https://drive.google.com/file/d/17hyx-0tYiNjUA9CBUKBAj4AfPeBVfO_s/view?usp=sharing" },
         ],
+        videos: [],
+      },
+
+      {
+        code:        "CSE 308",
+        title:       "Design Project I",
+        credits:     "1",
+        semesters:   ["Fall 2026"],
+        emoji:       "",
+        description: "Team-based design project applying software engineering practices: proposal planning, requirement specification, SDLC selection, DFD, and UML diagramming for a given system.",
+        topics: [
+          { name: "Team Formation, Project Assignment, Proposal Preparation and Planning",  links: null, video: null },
+          { name: "Introduction to Technical Report Writing Using LaTeX (Part 1)",          links: null, video: null },
+          { name: "Introduction to Technical Report Writing Using LaTeX (Part 2)",          links: null, video: null },
+          { name: "Requirement Specification for the Given Project",                        links: null, video: null },
+          { name: "SDLC Model Selection for the Given Project",                             links: null, video: null },
+          { name: "Developing Data Flow Diagram (DFD) Level 0 and Level 1 for the Given Project", links: null, video: null },
+          { name: "Develop UML Use Case Diagram for the Given Project",                     links: null, video: null },
+          { name: "Develop UML Sequence and Communication Diagram for the Given Project",   links: null, video: null },
+          { name: "Develop UML Class Diagram for the Given Project",                        links: null, video: null },
+          { name: "Develop UML Class Diagram for the Given Project: Extended Class Diagram", links: null, video: null },
+        ],
+        links:  [],
         videos: [],
       },
 
