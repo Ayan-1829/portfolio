@@ -38,6 +38,14 @@ function applyMode(mode) {
   if (typeof updateCursorForMode === 'function') {
     updateCursorForMode(mode);
   }
+
+  if (typeof setDocMeta === 'function') {
+    if (isArtMode) {
+      setDocMeta('Ayan Sarkar — Visual Artist', 'Self-taught painter and visual artist — explore original paintings and the art journey behind them.');
+    } else {
+      setDocMeta();
+    }
+  }
 }
 
 function toggleProfile() {

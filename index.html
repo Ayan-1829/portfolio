@@ -7,7 +7,7 @@
 
   <!-- Primary SEO -->
   <meta name="description" content="Portfolio of Ayan Sarkar — Lecturer in the Department of Computer Science &amp; Engineering at Green University of Bangladesh, and a self-taught painter. Explore academic work, research, projects, and original artwork."/>
-  <meta name="keywords" content="Ayan Sarkar, Green University of Bangladesh, CSE lecturer, computer science, machine learning, painter, visual artist, portfolio, Bangladesh"/>
+  <meta name="keywords" content="Ayan Sarkar, Green University of Bangladesh, CSE lecturer, computer science, Digital Logic Design, Object Oriented Programming, Software Engineering, Design Project, machine learning, painter, visual artist, portfolio, Bangladesh"/>
   <meta name="author" content="Ayan Sarkar"/>
   <meta name="robots" content="index, follow"/>
   <link rel="canonical" href="https://ayan-1829.github.io/portfolio/"/>
@@ -67,7 +67,9 @@
       "Computer Graphics",
       "Web Programming",
       "Data Communication",
-      "FPGA and VLSI Design"
+      "FPGA and VLSI Design",
+      "Software Engineering",
+      "UML Modeling"
     ],
     "address": {
       "@type": "PostalAddress",
@@ -277,6 +279,7 @@
 <script src="js/data_art.js"></script>
 <script src="js/data.js"></script>
 <script src="js/render.js"></script>
+<script src="js/seo.js"></script>
 <script src="js/toggle.js"></script>
 <script src="js/cursors.js"></script>
 <script>
@@ -386,6 +389,7 @@
     Render.all(initialMode);
     initToggle(initialMode);
     wireSecondaryBtn(initialMode);
+    if (typeof injectStructuredData === 'function') injectStructuredData();
 
     routeFromHash({ replace: true });
   });

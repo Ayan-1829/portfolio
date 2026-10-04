@@ -505,6 +505,10 @@ function openCourseModal(index, opts) {
     if (opts && opts.replace) history.replaceState({ courseSlug: slug }, '', url);
     else history.pushState({ courseSlug: slug }, '', url);
   }
+
+  if (typeof setDocMeta === 'function') {
+    setDocMeta(`${course.title} (${course.code}) — Ayan Sarkar`, course.description);
+  }
 }
 
 /* Toggle inline topic video on/off — supports multiple videos per topic */
@@ -536,6 +540,7 @@ function closeCourseModal(opts) {
 
   if (!(opts && opts.skipHashUpdate) && location.hash.startsWith('#course-')) {
     history.replaceState({ section: '#courses' }, '', '#courses');
+    if (typeof setDocMeta === 'function') setDocMeta();
   }
 }
 
@@ -751,6 +756,7 @@ function closeAchievementModal(opts) {
 
   if (!(opts && opts.skipHashUpdate) && location.hash.startsWith('#project-')) {
     history.replaceState({ section: '#projects' }, '', '#projects');
+    if (typeof setDocMeta === 'function') setDocMeta();
   }
 }
 
@@ -796,5 +802,9 @@ function openProjectModal(index, opts) {
     const url = '#project-' + slug;
     if (opts && opts.replace) history.replaceState({ projectSlug: slug }, '', url);
     else history.pushState({ projectSlug: slug }, '', url);
+  }
+
+  if (typeof setDocMeta === 'function') {
+    setDocMeta(`${p.title} — Ayan Sarkar`, (p.bullets && p.bullets[0]) || undefined);
   }
 }
