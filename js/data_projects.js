@@ -40,7 +40,7 @@ const DATA_PROJECTS = [
       "Practice with interactive tutorials and logic problems for hands-on learning.",
       "Built for education, helping users understand digital logic design concepts.",
     ],
-    links:  [ { label: "Try Gate Forge", url: "https://logic-bench.netlify.app" } ],
+    links:  [ { label: "Try Gate Forge", url: "https://gate-forge.netlify.app" } ],
     videos: [ { title: "Introduction to Gate Forge", url: "https://www.youtube.com/embed/KIAhm2HdJIc" } ],
     info:   [],
   },

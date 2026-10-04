@@ -96,7 +96,7 @@ const DATA_COURSES = [
           { name: "Read Only Memory, Programmable Logic Array, Programmable Array Logic",                                links: [ { label: "ROM Organization",    url: "https://ayan-1829.github.io/CSE-203-Digital-Logic-Design/topics/12-rom-and-programmable-logic.html#s=4" }, { label: "ROM Types",                     url: "https://ayan-1829.github.io/CSE-203-Digital-Logic-Design/topics/12-rom-and-programmable-logic.html#s=5" }, { label: "PLA & PAL", url: "https://ayan-1829.github.io/CSE-203-Digital-Logic-Design/topics/12-rom-and-programmable-logic.html#s=6" } ], video: null },
         ],
         links: [
-          { label: "Course Outline - Fall 2026", url: "https://drive.google.com/drive/folders/1sobEIJ6H9GI5iCzADdVi_Y3smqB3E2-3?usp=sharing" },
+          { label: "Course Outline - Fall 2026", url: "https://drive.google.com/file/d/1CqUQ26qtiGbuWTXxcin5N3XnO7yiqhSg/view?usp=sharing" },
           { label: "Books",                      url: "https://drive.google.com/drive/folders/1sobEIJ6H9GI5iCzADdVi_Y3smqB3E2-3?usp=sharing" },
           { label: "Midterm Slides",             url: "https://drive.google.com/drive/folders/14ccqb6niGMt2YP0chjBpSqF7yONoUgf5?usp=sharing" },
           { label: "Final Slides",               url: "https://drive.google.com/drive/folders/1NwwMMVCQ3ZGuPWRn5SO4PjywdUsoUAfM?usp=sharing" },
@@ -126,7 +126,7 @@ const DATA_COURSES = [
         ],
         links: [
           { label: "Course Outline - Fall 2026",            url: "https://drive.google.com/file/d/17cCYNOPRP2BoqD5yerNCj84bPcSoeiEa/view?usp=sharing" },
-          { label: "New Lab Manual",                        url: "https://drive.google.com/file/d/14_g-oYgYxR03BjFk_IjLQ2JvluaTu-oC/view" },
+          { label: "New Lab Manual",                        url: "https://drive.google.com/file/d/14_g-oYgYxR03BjFk_IjLQ2JvluaTu-oC/view?usp=sharing" },
           { label: "Old Lab Manuals",                       url: "https://drive.google.com/drive/folders/1b4tcoBlbepTmAcZRNuLce4RHVOhgrFWt?usp=sharing" },
           { label: "Gate Forge - Digital Logic Simulator",  url: "https://gate-forge.netlify.app" },
         ],
