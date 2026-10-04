@@ -367,6 +367,47 @@ function loadVideoFacade(btn) {
 function setText(id, v) { const e = document.getElementById(id); if (e) e.textContent = v; }
 function setHTML(id, v) { const e = document.getElementById(id); if (e) e.innerHTML  = v; }
 
+/* Turns a project title or course code into a stable, URL-safe slug
+   (e.g. "CSE 203/SWE 109" -> "cse-203-swe-109") so individual projects
+   and courses get shareable #project-… / #course-… links. */
+function slugify(str) {
+  return String(str || '').toLowerCase().trim()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+/* Copies the current URL (which already points at the open modal via
+   its #project-…/#course-… hash) to the clipboard, with a fallback for
+   browsers/contexts without the async Clipboard API. */
+function copyModalLink(btn) {
+  const url = window.location.href;
+  const onCopied = () => {
+    if (!btn) return;
+    const original = btn.dataset.label || btn.textContent;
+    btn.dataset.label = original;
+    btn.textContent = '✓';
+    btn.disabled = true;
+    setTimeout(() => { btn.textContent = original; btn.disabled = false; }, 1400);
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(url).then(onCopied).catch(() => fallbackCopyText(url, onCopied));
+  } else {
+    fallbackCopyText(url, onCopied);
+  }
+}
+
+function fallbackCopyText(text, cb) {
+  const ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.position = 'fixed';
+  ta.style.opacity = '0';
+  document.body.appendChild(ta);
+  ta.select();
+  try { document.execCommand('copy'); } catch (e) { /* no-op */ }
+  document.body.removeChild(ta);
+  if (cb) cb();
+}
+
 /* Small institution icon shown beside an organisation name in the
    Experience / Education timelines — same idea as the university icons
    in the Courses section. Missing or broken images just disappear so the
@@ -398,7 +439,7 @@ function courseSemesters(course) {
 }
 
 /* ── Course Modal — with per-topic links & videos (fix 7) ─────── */
-function openCourseModal(index) {
+function openCourseModal(index, opts) {
   const course = (window._allCourses || [])[index];
   if (!course) return;
 
@@ -456,6 +497,14 @@ function openCourseModal(index) {
 
   modal.classList.add('open');
   document.body.style.overflow = 'hidden';
+
+  /* Reflect this course in the URL so the modal state is shareable */
+  const slug = slugify(course.code);
+  if (slug) {
+    const url = '#course-' + slug;
+    if (opts && opts.replace) history.replaceState({ courseSlug: slug }, '', url);
+    else history.pushState({ courseSlug: slug }, '', url);
+  }
 }
 
 /* Toggle inline topic video on/off — supports multiple videos per topic */
@@ -476,7 +525,7 @@ function toggleTopicVideo(btn) {
   }
 }
 
-function closeCourseModal() {
+function closeCourseModal(opts) {
   const modal = document.getElementById('courseModal');
   if (modal) modal.classList.remove('open');
   document.body.style.overflow = '';
@@ -484,6 +533,10 @@ function closeCourseModal() {
   if (header) header.innerHTML = '';
   const body = document.getElementById('courseModalBody');
   if (body) body.innerHTML = '';
+
+  if (!(opts && opts.skipHashUpdate) && location.hash.startsWith('#course-')) {
+    history.replaceState({ section: '#courses' }, '', '#courses');
+  }
 }
 
 /* ── Lightbox ────────────────────────────────── */
@@ -687,7 +740,7 @@ function openAchievementModal(index) {
   document.body.style.overflow = 'hidden';
 }
 
-function closeAchievementModal() {
+function closeAchievementModal(opts) {
   const modal = document.getElementById('achievementModal');
   if (modal) modal.classList.remove('open');
   document.body.style.overflow = '';
@@ -695,10 +748,14 @@ function closeAchievementModal() {
   if (header) header.innerHTML = '';
   const body = document.getElementById('achievementModalBody');
   if (body) body.innerHTML = '';
+
+  if (!(opts && opts.skipHashUpdate) && location.hash.startsWith('#project-')) {
+    history.replaceState({ section: '#projects' }, '', '#projects');
+  }
 }
 
 /* ── Project Modal — videos + extra info ── */
-function openProjectModal(index) {
+function openProjectModal(index, opts) {
   const p = (window._allProjects || [])[index];
   if (!p) return;
   const modal  = document.getElementById('achievementModal');
@@ -732,4 +789,12 @@ function openProjectModal(index) {
 
   modal.classList.add('open');
   document.body.style.overflow = 'hidden';
+
+  /* Reflect this project in the URL so the modal state is shareable */
+  const slug = slugify(p.title);
+  if (slug) {
+    const url = '#project-' + slug;
+    if (opts && opts.replace) history.replaceState({ projectSlug: slug }, '', url);
+    else history.pushState({ projectSlug: slug }, '', url);
+  }
 }

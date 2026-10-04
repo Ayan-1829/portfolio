@@ -172,6 +172,7 @@
 <!-- Course modal -->
 <div class="course-modal-overlay" id="courseModal" onclick="closeCourseModal()">
   <div class="course-modal-box" onclick="event.stopPropagation()">
+    <button class="course-modal-share" onclick="copyModalLink(this)" title="Copy link to this course">🔗</button>
     <button class="course-modal-close" onclick="closeCourseModal()">✕</button>
     <div class="course-modal-header" id="courseModalHeader"></div>
     <div class="course-modal-scroll">
@@ -189,6 +190,7 @@
 <!-- Achievement modal (art journey) -->
 <div class="course-modal-overlay" id="achievementModal" onclick="closeAchievementModal()">
   <div class="course-modal-box" onclick="event.stopPropagation()">
+    <button class="course-modal-share" onclick="copyModalLink(this)" title="Copy link">🔗</button>
     <button class="course-modal-close" onclick="closeAchievementModal()">✕</button>
     <div class="course-modal-header course-modal-header--stack" id="achievementModalHeader"></div>
     <div class="course-modal-scroll">
@@ -355,8 +357,11 @@
     target.scrollIntoView({ behavior: 'smooth' });
   });
 
-  /* Handle browser back/forward — scroll to the section in history */
+  /* Handle browser back/forward — scroll to the section in history,
+     switch profile and/or open the right modal if the new hash calls
+     for it (toggle.js:handleHashNavigation). */
   window.addEventListener('popstate', function(e) {
+    handleHashNavigation();
     if (e.state && e.state.section) {
       const target = document.querySelector(e.state.section);
       if (target) target.scrollIntoView({ behavior: 'smooth' });
@@ -373,9 +378,16 @@
 
   /* ── Boot ─────────────────────────────────────── */
   document.addEventListener('DOMContentLoaded', function() {
-    Render.all('academic');
-    initToggle();
-    wireSecondaryBtn('academic');
+    /* A shared #art / #gallery / #project-… / #course-… link should
+       land directly in the right profile instead of flashing academic
+       first, so the initial render already uses that mode. */
+    const initialMode = modeForHash(window.location.hash) || 'academic';
+
+    Render.all(initialMode);
+    initToggle(initialMode);
+    wireSecondaryBtn(initialMode);
+
+    routeFromHash({ replace: true });
   });
 </script>
  <script src="js/analytics.js"
