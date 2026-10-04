@@ -175,6 +175,7 @@ const Render = {
     if (!projects.length) { grid.innerHTML = `<p style="color:var(--muted);">No projects added yet.</p>`; return; }
     window._allProjects = projects;
     grid.innerHTML = projects.map((p, idx) => {
+      if (p.type === 'courseMaterials') return courseMaterialsCardHTML(p, idx);
       const techPills = p.tech.map(t => `<span class="skill-pill" style="font-size:0.72rem;padding:0.2rem 0.6rem;">${t}</span>`).join('');
       const bullets = p.bullets.map(b => `<li style="color:var(--muted);font-size:0.9rem;line-height:1.7;margin-bottom:0.25rem;">${b}</li>`).join('');
       /* stopPropagation so following a link doesn't also open the modal */
@@ -199,6 +200,7 @@ const Render = {
           <div class="course-card-footer">View Details →</div>
         </div>`;
     }).join('');
+    initCmShelves(grid);
   },
 
   artPractice() {
@@ -732,6 +734,8 @@ function openAchievementModal(index) {
   const videos = entry.achievementVideos || [];
   const videosHTML = videos.map(videoFacadeHTML).join('');
 
+  modal.querySelector('.course-modal-box')?.classList.remove('course-modal-box--wide');
+
   header.innerHTML = `
     <div class="course-modal-code">${entry.organization} · ${entry.period}</div>
     <h2 class="course-modal-title">${entry.role}</h2>`;
@@ -760,6 +764,111 @@ function closeAchievementModal(opts) {
   }
 }
 
+/* ── Interactive Course Materials ─────────────────────────────────
+   A project of `type: 'courseMaterials'` spans both grid columns. Its
+   card shows each institution's courses as a row of small cards that
+   scrolls sideways when they don't all fit; the modal lists every
+   course as a full card with a preview. Course links open the course
+   site directly, so they stop the click from also opening the modal. */
+function courseMaterialsCardHTML(p, idx) {
+  const techPills = p.tech.map(t => `<span class="skill-pill" style="font-size:0.72rem;padding:0.2rem 0.6rem;">${t}</span>`).join('');
+  const iconHTML = p.icon
+    ? `<img src="images/${p.icon}" alt="${p.title} icon" class="project-card-icon" style="width:2rem;height:2rem;object-fit:contain;border-radius:6px;flex-shrink:0;"/>`
+    : '';
+  const shelves = (p.institutions || []).map(inst => {
+    const items = (inst.courses || []).map(c => `
+      <a href="${c.url}" target="_blank" rel="noopener" class="cm-mini" onclick="event.stopPropagation()" title="Open ${c.title}">
+        <img src="${c.logo}" alt="" class="cm-mini-logo" loading="lazy"/>
+        <span class="cm-mini-text">
+          <span class="cm-mini-code">${c.code}</span>
+          <span class="cm-mini-title">${c.title}</span>
+          ${c.count ? `<span class="cm-mini-count">${c.count}</span>` : ''}
+        </span>
+      </a>`).join('');
+    return `
+      <div class="cm-inst">
+        <div class="cm-inst-head">
+          ${inst.logo ? `<img src="${inst.logo}" alt="" class="cm-inst-logo"/>` : ''}
+          <span class="cm-inst-name">${inst.name}</span>
+        </div>
+        <div class="cm-shelf-wrap">
+          <button type="button" class="cm-shelf-arrow cm-shelf-arrow--prev" aria-label="Scroll left" onclick="event.stopPropagation();scrollCmShelf(this,-1)">‹</button>
+          <div class="cm-shelf">${items}</div>
+          <button type="button" class="cm-shelf-arrow cm-shelf-arrow--next" aria-label="Scroll right" onclick="event.stopPropagation();scrollCmShelf(this,1)">›</button>
+        </div>
+      </div>`;
+  }).join('');
+  return `
+    <div class="card project-card project-card--wide" onclick="openProjectModal(${idx})" style="display:flex;flex-direction:column;gap:0.6rem;cursor:pointer;">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;">
+        <div class="project-card-titlewrap">${iconHTML}<div class="card-title">${p.title}</div></div>
+        <span style="color:var(--muted);font-size:0.78rem;white-space:nowrap;flex-shrink:0;">${p.date}</span>
+      </div>
+      ${p.bullets && p.bullets[0] ? `<div class="card-desc">${p.bullets[0]}</div>` : ''}
+      <div style="display:flex;flex-wrap:wrap;gap:0.4rem;">${techPills}</div>
+      ${shelves}
+      <div class="course-card-footer">View All Courses →</div>
+    </div>`;
+}
+
+/* Full course cards for the modal, grouped under institution headings */
+function courseMaterialsModalHTML(p) {
+  return (p.institutions || []).map(inst => {
+    const cards = (inst.courses || []).map(c => `
+      <a href="${c.url}" target="_blank" rel="noopener" class="cm-card">
+        ${c.preview ? `<img src="${c.preview}" alt="${c.title} — course home page" class="cm-card-preview" loading="lazy"/>` : ''}
+        <div class="cm-card-body">
+          <div class="cm-card-head">
+            <img src="${c.logo}" alt="" class="cm-mini-logo"/>
+            <div>
+              <div class="cm-mini-code">${c.code}${c.count ? ` · ${c.count}` : ''}</div>
+              <div class="cm-card-title">${c.title}</div>
+            </div>
+          </div>
+          ${c.description ? `<p class="cm-card-desc">${c.description}</p>` : ''}
+          <span class="cm-card-open">Open Interactive Slides ↗</span>
+        </div>
+      </a>`).join('');
+    return `
+      <div class="course-modal-section">
+        <div class="cm-inst-head cm-inst-head--modal">
+          ${inst.logo ? `<img src="${inst.logo}" alt="" class="cm-inst-logo"/>` : ''}
+          <span class="cm-inst-name">${inst.name}</span>
+        </div>
+        <div class="cm-card-grid">${cards}</div>
+      </div>`;
+  }).join('');
+}
+
+function scrollCmShelf(btn, dir) {
+  const shelf = btn.parentElement.querySelector('.cm-shelf');
+  if (shelf) shelf.scrollBy({ left: dir * shelf.clientWidth * 0.8, behavior: 'smooth' });
+}
+
+/* Arrows only show when the row overflows, and each hides at its end. */
+function updateCmShelf(shelf) {
+  const wrap = shelf.parentElement;
+  const max = shelf.scrollWidth - shelf.clientWidth;
+  wrap.classList.toggle('cm-can-prev', shelf.scrollLeft > 2);
+  wrap.classList.toggle('cm-can-next', shelf.scrollLeft < max - 2);
+}
+
+function initCmShelves(root) {
+  const shelves = root.querySelectorAll('.cm-shelf');
+  if (!shelves.length) return;
+  shelves.forEach(s => {
+    s.addEventListener('scroll', () => updateCmShelf(s), { passive: true });
+    updateCmShelf(s);
+  });
+  if (!window._cmShelfResize) {
+    window._cmShelfResize = true;
+    window.addEventListener('resize', () =>
+      document.querySelectorAll('.cm-shelf').forEach(updateCmShelf));
+  }
+  /* Images and fonts can change the row's width after first paint */
+  window.addEventListener('load', () => shelves.forEach(updateCmShelf), { once: true });
+}
+
 /* ── Project Modal — videos + extra info ── */
 function openProjectModal(index, opts) {
   const p = (window._allProjects || [])[index];
@@ -768,6 +877,10 @@ function openProjectModal(index, opts) {
   const header = document.getElementById('achievementModalHeader');
   const body   = document.getElementById('achievementModalBody');
   if (!modal || !header || !body) return;
+
+  /* The course-materials modal holds a grid of cards, so it gets a wider box */
+  const isCourseMaterials = p.type === 'courseMaterials';
+  modal.querySelector('.course-modal-box')?.classList.toggle('course-modal-box--wide', isCourseMaterials);
 
   const techPills = p.tech.map(t => `<span class="skill-pill" style="font-size:0.75rem;padding:0.2rem 0.6rem;">${t}</span>`).join('');
   const linksHTML = (p.links || []).filter(l => l.url).map(l =>
@@ -789,6 +902,7 @@ function openProjectModal(index, opts) {
 
   body.innerHTML = `
     ${bulletsHTML ? `<div class="course-modal-section"><h3>Overview</h3><ul style="margin:0;padding-left:1.2rem;">${bulletsHTML}</ul></div>` : ''}
+    ${isCourseMaterials ? courseMaterialsModalHTML(p) : ''}
     ${linksHTML ? `<div class="course-modal-section"><h3>Links</h3><div class="course-links-row">${linksHTML}</div></div>` : ''}
     ${infoHTML  ? `<div class="course-modal-section"><h3>Additional Information</h3>${infoHTML}</div>` : ''}
     ${videosHTML ? `<div class="course-modal-section"><h3>Videos</h3><div class="course-videos-grid">${videosHTML}</div></div>` : ''}`;

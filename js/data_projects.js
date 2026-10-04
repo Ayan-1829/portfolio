@@ -44,6 +44,71 @@ const DATA_PROJECTS = [
     videos: [ { title: "Introduction to Gate Forge", url: "https://www.youtube.com/embed/KIAhm2HdJIc" } ],
     info:   [],
   },
+  /* Shown differently from the other projects: a full-width card with a
+     horizontally scrolling shelf of courses per institution, and a modal
+     listing every course as a card. To add a course, add it to the right
+     institution's `courses`; to add an institution, add another entry to
+     `institutions` (same shape as the GUB one). Images live in
+     images/courses/. `count` is the short "13 topics" style label. */
+  {
+    title:   "Interactive Course Materials",
+    type:    "courseMaterials",
+    icon:    "InteractiveCourses_icon.svg",
+    tech:    ["HTML", "CSS", "JavaScript", "Python", "Claude AI"],
+    date:    "September 2026",
+    bullets: [
+      "Interactive slide-deck websites for the courses I teach, built to be studied at the student's own pace.",
+      "Each topic has live demos, step-by-step code tracers or circuit simulations, practice drills and quizzes.",
+      "Free to open on any device — no sign-in, no installation.",
+    ],
+    institutions: [
+      {
+        name: "Green University of Bangladesh",
+        logo: "images/GUB_leaf_Logo.webp",
+        courses: [
+          {
+            code:        "CSE 201",
+            title:       "Object Oriented Programming",
+            count:       "13 topics",
+            description: "Classes, objects, inheritance, polymorphism, interfaces, exceptions, threads, strings, JavaFX, JDBC and Spring — with code tracers, demos and quizzes.",
+            logo:        "images/courses/OOP_logo.svg",
+            preview:     "images/courses/CSE-201_preview.webp",
+            url:         "https://ayan-1829.github.io/CSE-201-Object-Oriented-Programming/",
+          },
+          {
+            code:        "CSE 202",
+            title:       "Object Oriented Programming Lab",
+            count:       "10 labs",
+            description: "Java lab sessions from JDK setup to threads, Swing and animation: code walkthroughs, expected output, in-lab tasks, viva questions and quizzes.",
+            logo:        "images/courses/OOP_logo.svg",
+            preview:     "images/courses/CSE-202_preview.webp",
+            url:         "https://ayan-1829.github.io/CSE-202-Object-Oriented-Programming-Lab/",
+          },
+          {
+            code:        "CSE 203",
+            title:       "Digital Logic Design",
+            count:       "13 topics",
+            description: "Number systems, Boolean algebra, K-maps, combinational and sequential circuits, counters, registers, memory and programmable logic.",
+            logo:        "images/courses/DLD_logo.svg",
+            preview:     "images/courses/CSE-203_preview.webp",
+            url:         "https://ayan-1829.github.io/CSE-203-Digital-Logic-Design/",
+          },
+          {
+            code:        "CSE 308",
+            title:       "Design Project I",
+            count:       "10 topics",
+            description: "Project planning, LaTeX reports, IEEE SRS, SDLC models, DFDs, UML use case, sequence and class diagrams, and Figma wireframing.",
+            logo:        "images/courses/DesignProject_logo.svg",
+            preview:     "images/courses/CSE-308_preview.webp",
+            url:         "https://ayan-1829.github.io/CSE-308-Design-Project-I/",
+          },
+        ],
+      },
+    ],
+    links:  [],
+    videos: [],
+    info:   [],
+  },
   {
     title:   "Daily Life",
     icon:    "DailyLife_icon.webp",
