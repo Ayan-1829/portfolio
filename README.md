@@ -1,6 +1,6 @@
 # Ayan Sarkar — Portfolio
 
-🌐 **Live Site:** [ayan-1829.github.io/portfolio](https://ayan-1829.github.io/portfolio)
+🌐 **Live Site:** [ayan-1829.github.io](https://ayan-1829.github.io/) (this repo now only redirects there; the site is built from the [Ayan-1829.github.io](https://github.com/Ayan-1829/Ayan-1829.github.io) repo)
 
 A personal portfolio website for **Ayan Sarkar**, Lecturer in the Department of Computer Science and Engineering at Green University of Bangladesh. The site features a dual-profile design — switching seamlessly between an academic profile and an art profile.
 
