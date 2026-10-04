@@ -4,12 +4,11 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Ayan Sarkar | Moved to ayan-1829.github.io</title>
-  <!-- This portfolio moved to the site root. Search engines follow the canonical link
-       and drop this old address; visitors are sent on at once, keeping any #section. -->
-  <link rel="canonical" href="https://ayan-1829.github.io/"/>
-  <meta name="robots" content="noindex, follow"/>
-  <meta http-equiv="refresh" content="0; url=https://ayan-1829.github.io/"/>
-  <script>location.replace('https://ayan-1829.github.io/' + location.hash);</script>
+  <!-- GitHub Pages shows this page for any address under /portfolio/ that no longer exists here
+       (the CV, images, ...). Everything moved to the site root, so the same path there is opened:
+       /portfolio/Ayan_Sarkar_CV.pdf -> /Ayan_Sarkar_CV.pdf -->
+  <meta name="robots" content="noindex"/>
+  <script>location.replace('https://ayan-1829.github.io' + location.pathname.replace(/^\/portfolio(?=\/|$)/, '') + location.search + location.hash);</script>
   <style>body{font:17px/1.5 system-ui,sans-serif;margin:0;min-height:100vh;display:grid;place-items:center;padding:16px;text-align:center}</style>
 </head>
 <body>
